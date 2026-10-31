@@ -15,21 +15,27 @@
     kitty
     vesktop
     fastfetch
+    btop
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity-cli
 
-    # Custom rebuild command for Bash, Fish, and all shells
+    # Rebuild system configuration from ~/nix
     (writeShellScriptBin "nbuild" ''
       set -e
-      if [ "$1" = "home" ]; then
-        echo ":: Staging and building flake from ~/nix..."
-        git -C "$HOME/nix" add .
-        sudo nixos-rebuild switch --flake "$HOME/nix#nixos"
-      else
-        echo ":: Staging and building flake from current directory..."
-        git add .
-        sudo nixos-rebuild switch --flake .#nixos
-      fi
+      echo ":: Staging and building NixOS from ~/nix..."
+      git -C "$HOME/nix" add .
+      sudo nixos-rebuild switch --flake "$HOME/nix#nixos" "$@"
+    '')
+
+    # Update flake inputs and rebuild system configuration
+    (writeShellScriptBin "nupdate" ''
+      set -e
+      echo ":: Updating flake inputs in ~/nix..."
+      cd "$HOME/nix"
+      nix flake update
+      git -C "$HOME/nix" add flake.lock
+      echo ":: Rebuilding NixOS from ~/nix..."
+      sudo nixos-rebuild switch --flake "$HOME/nix#nixos" "$@"
     '')
   ];
 }

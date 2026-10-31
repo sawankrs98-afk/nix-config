@@ -13,8 +13,8 @@
     waybar
     rofi
     fuzzel
-    dunst
-    mako
+    #dunst
+    #mako
 
     # Wayland utilities
     wl-clipboard
@@ -30,7 +30,7 @@
     pavucontrol
     brightnessctl
     playerctl
-    libnotify
+    #libnotify
 
     # Terminal emulators
     kitty

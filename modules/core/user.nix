@@ -12,6 +12,18 @@
     ];
   };
 
+  # Disable GNOME's gcr ssh agent to prevent conflict with standard OpenSSH agent
+  services.gnome.gcr-ssh-agent.enable = false;
+
+  # Automatically start standard OpenSSH agent on boot and retain keys across sessions
+  programs.ssh = {
+    startAgent = true;
+    extraConfig = ''
+      Host *
+        AddKeysToAgent yes
+    '';
+  };
+
   # Fish shell configuration
   programs.fish = {
     enable = true;
