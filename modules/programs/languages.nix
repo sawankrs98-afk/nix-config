@@ -73,5 +73,9 @@
     uv              # Blazing-fast modern Python package & project manager
     ruff            # Fast Python linter & formatter
     pyright         # Static type checker & LSP
+
+    # --- SQL ---
+    sqls            # SQL Language Server (syntax errors, diagnostics, completions)
+    sqlfluff        # SQL linter & formatter
   ];
 }
