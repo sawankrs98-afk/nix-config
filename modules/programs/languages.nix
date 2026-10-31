@@ -56,9 +56,10 @@
     cargo-watch     # Auto-rebuild on file changes
 
     # --- Java ---
-    jdk             # OpenJDK runtime & compiler
-    maven           # Apache Maven build tool
-    gradle          # Gradle build tool
+    jdk                 # OpenJDK runtime & compiler
+    jdt-language-server # Eclipse JDT Language Server (LSP for Helix/Neovim)
+    maven               # Apache Maven build tool
+    gradle              # Gradle build tool
 
     # --- Python ---
     (python3.withPackages (ps: with ps; [
