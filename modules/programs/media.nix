@@ -1,7 +1,10 @@
+# ── Media ─────────────────────────────────────────────────────────────────────
+# Music and media playback applications.
+# ─────────────────────────────────────────────────────────────────────────────
 { pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    spotify
+    spotify # Music streaming client
   ];
 }

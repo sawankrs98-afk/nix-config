@@ -1,31 +1,38 @@
+# ── Plasma & GNOME Desktop Configuration ─────────────────────────────────────
+#
+# Configures KDE Plasma 6 (primary) and GNOME desktop environments,
+# SDDM display manager with Wayland, X11 services, keyboard layout,
+# and printing settings.
+#
+# ─────────────────────────────────────────────────────────────────────────────
 { pkgs, lib, ... }:
 
 {
-  # X11 / Display / Desktop services
+  # ── X11 / Display Server ─────────────────────────────────────────────────
   services.xserver.enable = true;
 
-  # SDDM Display Manager with Wayland support
+  # ── Display Manager (SDDM) ──────────────────────────────────────────────
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
 
-  # Default session for display manager
+  # Default session launched by the display manager
   services.displayManager.defaultSession = "plasma";
 
-  # Desktop Environments
+  # ── Desktop Environments ─────────────────────────────────────────────────
   services.desktopManager.plasma6.enable = true;
   services.desktopManager.gnome.enable = true;
 
   # Resolve conflict between Plasma (ksshaskpass) and GNOME (seahorse)
   programs.ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
 
-  # Keyboard layout
+  # ── Keyboard Layout ─────────────────────────────────────────────────────
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  # Printing disabled
+  # ── Printing ─────────────────────────────────────────────────────────────
   services.printing.enable = false;
 }

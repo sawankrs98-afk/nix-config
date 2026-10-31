@@ -1,7 +1,11 @@
+# ── User Account & Shell ─────────────────────────────────────────────
+# Defines the primary user "kuro", configures the Fish shell,
+# sets up the OpenSSH agent, and pins the NixOS state version.
+# ─────────────────────────────────────────────────────────────────────
 { pkgs, ... }:
 
 {
-  # User account configuration
+  # ── User: kuro ──────────────────────────────────────────────────────
   users.users."kuro" = {
     isNormalUser = true;
     description = "Saksham";
@@ -12,10 +16,12 @@
     ];
   };
 
-  # Disable GNOME's gcr ssh agent to prevent conflict with standard OpenSSH agent
+  # ── SSH Agent ───────────────────────────────────────────────────────
+  # Disable GNOME's gcr ssh-agent to avoid conflicts with OpenSSH's.
   services.gnome.gcr-ssh-agent.enable = false;
 
-  # Automatically start standard OpenSSH agent on boot and retain keys across sessions
+  # Start the standard OpenSSH agent at boot and persist keys across
+  # sessions with AddKeysToAgent.
   programs.ssh = {
     startAgent = true;
     extraConfig = ''
@@ -24,7 +30,7 @@
     '';
   };
 
-  # Fish shell configuration
+  # ── Fish Shell ──────────────────────────────────────────────────────
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -32,6 +38,8 @@
     '';
   };
 
-  # NixOS state version
+  # ── State Version ──────────────────────────────────────────────────
+  # DO NOT change — tracks the NixOS release at initial install for
+  # backwards-compatible defaults in stateful services.
   system.stateVersion = "26.05";
 }

@@ -1,25 +1,29 @@
+# ── Bootloader & Kernel ──────────────────────────────────────────────
+# Configures the Limine EFI bootloader with native-resolution
+# branding, a Windows chainload entry, and the latest Linux kernel.
+# ─────────────────────────────────────────────────────────────────────
 { pkgs, ... }:
 
 {
-  # Limine EFI bootloader
+  # ── Limine EFI Bootloader ──────────────────────────────────────────
   boot.loader.limine = {
     enable = true;
     efiSupport = true;
     maxGenerations = 5;
 
-    # Fix pixelation: set crisp native 1920x1200 resolution
+    # Crisp native framebuffer resolution (avoids pixelation)
     resolution = "1920x1200";
 
     style = {
       interface = {
         resolution = "1920x1200";
         branding = "NixOS";
-        brandingColor = "7EBAE4"; # Clean NixOS blue/cyan accent
-        helpHidden = true;        # Hides cluttered keybind help at the top
+        brandingColor = "7EBAE4";  # NixOS blue / cyan accent
+        helpHidden = true;         # Hide keybind help bar at top
       };
     };
 
-    # Windows Boot Manager EFI chainload entry
+    # Windows Boot Manager — EFI chainload entry
     extraEntries = ''
       /Windows Boot Manager
         protocol: efi_chainload
@@ -29,6 +33,7 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Latest Linux kernel
+  # ── Kernel ──────────────────────────────────────────────────────────
+  # Track the latest stable mainline kernel for newest hardware support.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }

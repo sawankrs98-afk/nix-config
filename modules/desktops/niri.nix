@@ -1,18 +1,27 @@
+# ── Niri Scrollable-Tiling Wayland Compositor ────────────────────────────────
+#
+# Enables the Niri compositor and the iNiR Quickshell-based desktop
+# environment (Dank Material Shell).  Bundles XWayland bridging,
+# Quickshell with its Qt6 dependencies, theming daemons, and assorted
+# CLI helpers required by the iNiR shell scripts.
+#
+# ─────────────────────────────────────────────────────────────────────────────
 { config, pkgs, ... }:
 
 {
-  # Enable Niri scrollable-tiling Wayland compositor
+  # ── Compositor ───────────────────────────────────────────────────────────
   programs.niri.enable = true;
 
-  # Enable Dank Material Shell
+  # ── Dank Material Shell ──────────────────────────────────────────────────
   programs.dank-material-shell.enable = true;
 
-  # Packages required for Niri and the iNiR Quickshell desktop environment
+  # ── Packages ─────────────────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
-    # Niri & XWayland support
+
+    # ── XWayland bridge ────────────────────────────────────────────────────
     xwayland-satellite
 
-    # Quickshell & Qt6 components
+    # ── Quickshell & Qt6 components ────────────────────────────────────────
     quickshell
     kdePackages.qtdeclarative
     kdePackages.qtwayland
@@ -23,11 +32,11 @@
     kdePackages.kdialog
     kdePackages.syntax-highlighting
 
-    # Theming & Wallpaper daemons for iNiR
+    # ── Theming & wallpaper daemons (iNiR) ─────────────────────────────────
     matugen
     awww
 
-    # iNiR system tools & CLI helpers
+    # ── System tools & CLI helpers (iNiR) ──────────────────────────────────
     socat
     bc
     jq
@@ -49,7 +58,9 @@
     kdePackages.plasma-integration
     (python3.withPackages (ps: with ps; [ pillow ]))
 
-    # Toggle column between half-width (50%) and full-width (100%) for Mod+D
+    # ── niri-toggle-maximize ───────────────────────────────────────────────
+    # Toggle focused column between half-width (50 %) and full-width (100 %)
+    # Bound to Mod+D in the Niri key-map.
     (writeShellScriptBin "niri-toggle-maximize" ''
       WINDOW=$(${pkgs.niri}/bin/niri msg --json focused-window 2>/dev/null)
       if [ -z "$WINDOW" ] || [ "$WINDOW" = "null" ]; then

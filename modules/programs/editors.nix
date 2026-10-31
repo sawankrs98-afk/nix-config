@@ -1,8 +1,11 @@
+# ── Editors ───────────────────────────────────────────────────────────────────
+# Text editors and IDEs available system-wide.
+# ─────────────────────────────────────────────────────────────────────────────
 { pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    helix
-    vscode
+    helix   # Modal terminal editor
+    vscode  # Visual Studio Code
   ];
 }
