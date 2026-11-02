@@ -24,7 +24,9 @@
     kitty                                                                          # GPU-accelerated terminal
     vesktop                                                                        # Discord client (Vencord)
     fastfetch                                                                      # System info fetcher
-    btop                                                                           # System resource monitor
+    btop
+    libreoffice
+    qbittorrent                                                                           # System resource monitor
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity      # Antigravity GUI
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity-cli  # Antigravity CLI
 
@@ -47,6 +49,23 @@
       git -C "$HOME/nix" add flake.lock
       echo ":: Rebuilding NixOS from ~/nix..."
       sudo nixos-rebuild switch --flake "$HOME/nix#nixos" "$@"
+    '')
+
+    # ── 5 GHz Wi-Fi Hotspot Controls ─────────────────────────────────────
+    # Start high-speed 5 GHz hotspot (SSID: saksham)
+    (writeShellScriptBin "hotspot-on" ''
+      set -e
+      echo ":: Starting 5 GHz Hotspot (SSID: saksham)..."
+      nmcli connection up "Hotspot-5GHz"
+      echo ":: Hotspot ACTIVE! SSID: saksham | Band: 5 GHz (Ch 36) | Password: zyta5466"
+    '')
+
+    # Stop hotspot and return Wi-Fi to standard client mode
+    (writeShellScriptBin "hotspot-off" ''
+      set -e
+      echo ":: Stopping 5 GHz Hotspot..."
+      nmcli connection down "Hotspot-5GHz" || true
+      echo ":: Hotspot stopped. Wi-Fi returned to client mode."
     '')
   ];
 }
