@@ -26,7 +26,9 @@
     fastfetch                                                                      # System info fetcher
     btop
     libreoffice
-    qbittorrent                                                                           # System resource monitor
+    qbittorrent
+    obsidian
+    kdePackages.filelight                                                                           # System resource monitor
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity      # Antigravity GUI
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity-cli  # Antigravity CLI
 
