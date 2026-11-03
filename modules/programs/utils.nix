@@ -22,7 +22,7 @@
     # ── Core Tools ───────────────────────────────────────────────────────
     git                                                                            # Version control
     kitty                                                                          # GPU-accelerated terminal
-    vesktop                                                                        # Discord client (Vencord)
+    # vesktop                                                                        # Discord client (Vencord)
     fastfetch                                                                      # System info fetcher
     btop
     libreoffice
