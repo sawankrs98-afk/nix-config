@@ -15,6 +15,12 @@
     xwayland.enable = true;
   };
 
+  # ── DynamicYou Shell & Rice ──────────────────────────────────────────────
+  programs.dynamic-you = {
+    enable = true;
+    installFonts = true;
+  };
+
   # ── Wayland Desktop Packages ─────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
     # Bars, launchers & notifications
@@ -40,7 +46,7 @@
     pavucontrol
     brightnessctl
     playerctl
-    #libnotify
+    libnotify
 
     # Terminal emulators
     kitty

@@ -6,6 +6,7 @@
 {
   environment.systemPackages = with pkgs; [
     helix   # Modal terminal editor
-    vscode  # Visual Studio Code
+    vscode
+    zed-editor
   ];
 }

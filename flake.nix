@@ -33,6 +33,12 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # DynamicYou — Material 3 QuickShell rice for Hyprland
+    dynamic-you = {
+      url = "path:/home/kuro/dynamic-you";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # ── Outputs ─────────────────────────────────────────────────────────
@@ -42,6 +48,7 @@
       specialArgs = { inherit inputs; };
       modules = [
         inputs.dank-material-shell.nixosModules.default
+        inputs.dynamic-you.nixosModules.default
         ./hosts/nixos
       ];
     };
