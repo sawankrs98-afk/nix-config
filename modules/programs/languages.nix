@@ -1,5 +1,5 @@
 # ── Programming Languages & Toolchains ───────────────────────────────────────
-# Development environments for C/C++, Rust, Java, Python, and SQL.
+# Development environments for C/C++, Rust, Java, Python, SQL, and R.
 # Includes compilers, LSP servers, linters, formatters, and build tools.
 # Also configures nix-ld for running unpatched dynamically-linked binaries.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -90,5 +90,15 @@
     sqls                # SQL Language Server (syntax errors, diagnostics, completions)
     sqlfluff            # SQL linter & formatter
     mariadb             # MariaDB / MySQL client tools (mariadb, mysql)
+
+    # ── R ──────────────────────────────────────────────────────────────
+    (rWrapper.override {
+      packages = with rPackages; [
+        languageserver  # R Language Server (LSP backend for editors)
+        IRkernel        # R kernel backend (for Jupyter/interactive notebooks)
+        httpuv          # HTTP and WebSocket server backend
+        jsonlite        # Robust JSON parser/generator backend
+      ];
+    })
   ];
 }
