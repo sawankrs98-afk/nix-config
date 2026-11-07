@@ -42,6 +42,9 @@
     # Rebuild system configuration from ~/nix
     (writeShellScriptBin "nbuild" ''
       set -e
+      echo ":: Syncing local flake inputs..."
+      cd "$HOME/nix"
+      nix flake update dynamic-you 2>/dev/null || true
       echo ":: Staging and building NixOS from ~/nix..."
       git -C "$HOME/nix" add .
       sudo nixos-rebuild switch --flake "$HOME/nix#nixos" "$@"
