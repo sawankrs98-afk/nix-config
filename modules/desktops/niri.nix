@@ -13,7 +13,10 @@
   programs.niri.enable = true;
 
   # ── Dank Material Shell ──────────────────────────────────────────────────
-  programs.dank-material-shell.enable = true;
+  # programs.dank-material-shell.enable = true;
+
+  # ── iNiR Shell ───────────────────────────────────────────────────────────
+  programs.inir.enable = true;
 
   # ── Packages ─────────────────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [

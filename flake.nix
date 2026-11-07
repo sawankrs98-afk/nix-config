@@ -29,8 +29,14 @@
     };
 
     # Dank Material Shell — Material design shell for Wayland (Niri)
-    dank-material-shell = {
-      url = "github:AvengeMedia/DankMaterialShell";
+    # dank-material-shell = {
+    #   url = "github:AvengeMedia/DankMaterialShell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # iNiR — desktop shell for Niri (prerelease branch)
+    inir = {
+      url = "github:snowarch/iNiR/prerelease";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -47,7 +53,8 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        inputs.dank-material-shell.nixosModules.default
+        # inputs.dank-material-shell.nixosModules.default
+        inputs.inir.nixosModules.default
         inputs.dynamic-you.nixosModules.default
         ./hosts/nixos
       ];

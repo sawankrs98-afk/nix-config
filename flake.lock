@@ -21,44 +21,6 @@
         "type": "github"
       }
     },
-    "dank-material-shell": {
-      "inputs": {
-        "dank-qml-common": "dank-qml-common",
-        "flake-compat": "flake-compat",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1794037540,
-        "narHash": "sha256-4KXv+oLlXDeslVltnV9/AqW8n0QK4MIKrzUDcY/X42U=",
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell",
-        "rev": "6933f9893334cfd742656950540aa0e6bd3940ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell",
-        "type": "github"
-      }
-    },
-    "dank-qml-common": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1793982952,
-        "narHash": "sha256-dffCm8ok1sFxCNYJ6pP6m0mln+TVRtnd5shO7phKSAQ=",
-        "owner": "duxlabs-dev",
-        "repo": "dux-qml-common",
-        "rev": "b02c0321263372a8c9d18c6648b4608a1865ff90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "duxlabs-dev",
-        "repo": "dux-qml-common",
-        "type": "github"
-      }
-    },
     "dynamic-you": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -75,22 +37,6 @@
       "original": {
         "path": "/home/kuro/dynamic-you",
         "type": "path"
-      }
-    },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767039857,
-        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "type": "github"
       }
     },
     "flake-utils": {
@@ -172,6 +118,27 @@
         "type": "github"
       }
     },
+    "inir": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794073350,
+        "narHash": "sha256-PpxpDCBO7ngDdQJOSQimqXSWCXyBQDExlAXZgeU9XeY=",
+        "owner": "snowarch",
+        "repo": "iNiR",
+        "rev": "07fe6df1839da5d31c856d73c4de49f3ef1fa68b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "snowarch",
+        "ref": "prerelease",
+        "repo": "iNiR",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1793876309,
@@ -207,9 +174,9 @@
     "root": {
       "inputs": {
         "antigravity-nix": "antigravity-nix",
-        "dank-material-shell": "dank-material-shell",
         "dynamic-you": "dynamic-you",
         "helium": "helium",
+        "inir": "inir",
         "nixpkgs": "nixpkgs",
         "zen-browser": "zen-browser"
       }
