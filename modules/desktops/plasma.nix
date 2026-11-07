@@ -15,7 +15,23 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+    theme = "ii-pixel";
+    settings = {
+      Theme = {
+        ThemeDir = "/usr/share/sddm/themes";
+      };
+    };
+    extraPackages = with pkgs.kdePackages; [
+      qt5compat
+      qtsvg
+    ];
   };
+
+  # Ensure SDDM theme directory is writable by user so inir-accel can sync wallpaper/colors
+  systemd.tmpfiles.rules = [
+    "d /usr/share/sddm/themes 0755 root root -"
+    "Z /usr/share/sddm/themes/ii-pixel 0755 kuro users -"
+  ];
 
   # Default session launched by the display manager
   services.displayManager.defaultSession = "plasma";
