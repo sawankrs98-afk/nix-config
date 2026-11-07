@@ -16,6 +16,12 @@
     nerd-fonts.symbols-only  # Nerd Font symbols (icon glyphs)
   ];
 
+  fonts.fontconfig = {
+    defaultFonts = {
+      monospace = [ "Mononoki Nerd Font Mono" "Mononoki Nerd Font" ];
+    };
+  };
+
   # ── Packages ───────────────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
 
@@ -42,7 +48,7 @@
     '')
 
     # ── NixOS Update & Rebuild Helper ────────────────────────────────────
-    # Update flake inputs and rebuild system configuration
+    # Update flake inputs, rebuild system configuration, and update Flatpaks
     (writeShellScriptBin "nupdate" ''
       set -e
       echo ":: Updating flake inputs in ~/nix..."
@@ -51,6 +57,11 @@
       git -C "$HOME/nix" add flake.lock
       echo ":: Rebuilding NixOS from ~/nix..."
       sudo nixos-rebuild switch --flake "$HOME/nix#nixos" "$@"
+
+      if command -v flatpak >/dev/null 2>&1; then
+        echo ":: Updating Flatpak packages..."
+        flatpak update -y || true
+      fi
     '')
 
     # ── 5 GHz Wi-Fi Hotspot Controls ─────────────────────────────────────

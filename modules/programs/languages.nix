@@ -89,5 +89,6 @@
     # ── SQL ────────────────────────────────────────────────────────────
     sqls                # SQL Language Server (syntax errors, diagnostics, completions)
     sqlfluff            # SQL linter & formatter
+    mariadb             # MariaDB / MySQL client tools (mariadb, mysql)
   ];
 }
