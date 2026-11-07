@@ -15,22 +15,17 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "ii-pixel";
-    settings = {
-      Theme = {
-        ThemeDir = "/usr/share/sddm/themes";
-      };
-    };
+    theme = "sddm-astronaut-theme";
     extraPackages = with pkgs.kdePackages; [
-      qt5compat
       qtsvg
+      qtmultimedia
+      qtvirtualkeyboard
     ];
   };
 
-  # Ensure SDDM theme directory is writable by user so inir-accel can sync wallpaper/colors
-  systemd.tmpfiles.rules = [
-    "d /usr/share/sddm/themes 0755 root root -"
-    "Z /usr/share/sddm/themes/ii-pixel 0755 kuro users -"
+  # SDDM Astronaut Theme package
+  environment.systemPackages = [
+    pkgs.sddm-astronaut
   ];
 
   # Default session launched by the display manager
