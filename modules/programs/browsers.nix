@@ -12,6 +12,11 @@
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # Zen Browser (flake input)
     inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default      # Helium browser (flake input)
+
+    # CLI wrapper for Brave Flatpak
+    (writeShellScriptBin "brave" ''
+      exec ${pkgs.flatpak}/bin/flatpak run com.brave.Browser "$@"
+    '')
   ];
 
   # ── Flatpak & Brave Browser ──────────────────────────────────────────────
