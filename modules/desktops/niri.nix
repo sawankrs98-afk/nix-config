@@ -6,8 +6,13 @@
 # CLI helpers required by the iNiR shell scripts.
 #
 # ─────────────────────────────────────────────────────────────────────────────
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  inirComplete = pkgs.callPackage ./inir-complete.nix {
+    inirBase = inputs.inir.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  };
+in
 {
   # ── Compositor ───────────────────────────────────────────────────────────
   programs.niri.enable = true;
@@ -16,7 +21,10 @@
   # programs.dank-material-shell.enable = true;
 
   # ── iNiR Shell ───────────────────────────────────────────────────────────
-  programs.inir.enable = true;
+  programs.inir = {
+    enable = true;
+    package = inirComplete;
+  };
 
   # ── Packages ─────────────────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
