@@ -65,6 +65,20 @@ EOF
       --replace-fail 'have="$(readlink "$data/accel/current" 2>/dev/null)"; have="''${have##*/}"' \
                      'have="$(readlink "$data/accel/current" 2>/dev/null)"; have="''${have##*/}"; [[ -z "$have" && -x "''${INIR_ACCEL:-}" ]] && have="$("$INIR_ACCEL" --version 2>/dev/null | head -n1 | cut -d" " -f2)"'
 
+    # Fix GTK3 treeview/filechooser text color in generated GTK3 CSS
+    if [ -f $out/share/quickshell/inir/scripts/colors/apply-gtk-theme.sh ]; then
+      substituteInPlace $out/share/quickshell/inir/scripts/colors/apply-gtk-theme.sh \
+        --replace-fail '.view {' 'treeview.view, .view, treeview, filechooser .view, filechooser treeview { color: ''${FG}; } .view {' \
+        --replace-fail '@define-color accent_color' '@define-color theme_fg_color ''${FG};
+@define-color theme_text_color ''${FG};
+@define-color theme_bg_color ''${BG};
+@define-color theme_base_color ''${BG};
+@define-color theme_selected_bg_color ''${ROW_ACTIVE_BG};
+@define-color theme_selected_fg_color ''${ROW_SELECTED_FG};
+
+@define-color accent_color'
+    fi
+
     # Ensure scripts remain executable after substitution
     chmod -R +x $out/share/quickshell/inir/scripts
 
