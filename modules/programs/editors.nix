@@ -8,5 +8,6 @@
     helix   # Modal terminal editor
     vscode
     zed-editor
+    rstudio # Integrated development environment for R
   ];
 }
