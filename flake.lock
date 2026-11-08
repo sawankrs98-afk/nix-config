@@ -29,14 +29,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1794076748,
-        "narHash": "sha256-kZM9GdiU4wOoJvH7bnULqr/9+2F8sYvOv1KQ8XEClJU=",
-        "path": "/home/kuro/dynamic-you",
-        "type": "path"
+        "lastModified": 1794122533,
+        "narHash": "sha256-cF1wGB8DJSUkyZaPGuqgD1/FIQokNqIfOR2NDVM7M9A=",
+        "owner": "SubhamJM",
+        "repo": "DynamicYou",
+        "rev": "e0c639962d5feaae1cfccdd8a7bcb274c85149b0",
+        "type": "github"
       },
       "original": {
-        "path": "/home/kuro/dynamic-you",
-        "type": "path"
+        "owner": "SubhamJM",
+        "ref": "nix-support",
+        "repo": "DynamicYou",
+        "type": "github"
       }
     },
     "flake-utils": {

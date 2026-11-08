@@ -42,7 +42,7 @@
 
     # DynamicYou — Material 3 QuickShell rice for Hyprland
     dynamic-you = {
-      url = "path:/home/kuro/dynamic-you";
+      url = "github:SubhamJM/DynamicYou/nix-support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
