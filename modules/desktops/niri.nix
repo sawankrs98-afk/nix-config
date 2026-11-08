@@ -27,6 +27,8 @@ in
     extraPackages = with pkgs; [
       cava
       file
+      gowall
+      easyeffects
     ];
   };
 
@@ -54,6 +56,8 @@ in
     # ── System tools & CLI helpers (iNiR) ──────────────────────────────────
     cava
     file
+    gowall
+    easyeffects
     socat
     bc
     jq

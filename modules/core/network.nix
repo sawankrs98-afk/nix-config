@@ -76,4 +76,12 @@
   # ── Cloudflare WARP ─────────────────────────────────────────────────
   # Provides encrypted DNS and optional VPN tunneling via WARP daemon.
   services.cloudflare-warp.enable = true;
+
+  # ── Tailscale Mesh VPN ──────────────────────────────────────────────
+  services.tailscale.enable = true;
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
+  # ── Geolocation ─────────────────────────────────────────────────────
+  # Used by iNiR weather and night light
+  services.geoclue2.enable = true;
 }
