@@ -71,7 +71,6 @@ in
     libqalculate
     upower
     uv
-    mpv
     ffmpeg
     yt-dlp
     swaylock

@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     spotify                             # Music streaming client
     mgba                                # Modern, accurate Game Boy Advance (GBA) emulator
+    haruna                              # Modern Qt GUI video player
     ani-cli                             # CLI anime browser and streamer
     ani-skip                            # Auto-skip anime openings & endings in mpv
     mov-cli                             # CLI movie, TV show, and anime streamer
