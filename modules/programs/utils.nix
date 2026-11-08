@@ -12,12 +12,16 @@
 
   # ── Fonts ──────────────────────────────────────────────────────────────
   fonts.packages = with pkgs; [
-    nerd-fonts.mononoki      # Mononoki Nerd Font (coding font)
+    inter                    # Inter (system-wide clean sans-serif)
+    nerd-fonts.mononoki      # Mononoki Nerd Font (coding & terminal)
     nerd-fonts.symbols-only  # Nerd Font symbols (icon glyphs)
   ];
 
   fonts.fontconfig = {
+    enable = true;
     defaultFonts = {
+      sansSerif = [ "Inter" ];
+      serif = [ "Inter" ];
       monospace = [ "Mononoki Nerd Font Mono" "Mononoki Nerd Font" ];
     };
   };
