@@ -24,6 +24,10 @@ in
   programs.inir = {
     enable = true;
     package = inirComplete;
+    extraPackages = with pkgs; [
+      cava
+      file
+    ];
   };
 
   # ── Packages ─────────────────────────────────────────────────────────────
@@ -48,6 +52,8 @@ in
     awww
 
     # ── System tools & CLI helpers (iNiR) ──────────────────────────────────
+    cava
+    file
     socat
     bc
     jq
