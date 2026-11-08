@@ -38,6 +38,7 @@
     libreoffice
     qbittorrent
     obsidian
+    adw-gtk3                                                                       # Libadwaita theme for GTK3 apps
     kdePackages.filelight                                                                           # System resource monitor
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity      # Antigravity GUI
     inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity-cli  # Antigravity CLI
