@@ -1,29 +1,21 @@
 # ── Niri Scrollable-Tiling Wayland Compositor ────────────────────────────────
 #
 # Enables the Niri compositor and the iNiR Quickshell-based desktop
-# environment (Dank Material Shell).  Bundles XWayland bridging,
-# Quickshell with its Qt6 dependencies, theming daemons, and assorted
-# CLI helpers required by the iNiR shell scripts.
+# environment. Uses upstream's official iNiR NixOS module and package.
 #
 # ─────────────────────────────────────────────────────────────────────────────
 { config, pkgs, inputs, ... }:
 
-let
-  inirComplete = pkgs.callPackage ./inir-complete.nix {
-    inirBase = inputs.inir.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  };
-in
 {
   # ── Compositor ───────────────────────────────────────────────────────────
   programs.niri.enable = true;
 
-  # ── Dank Material Shell ──────────────────────────────────────────────────
-  # programs.dank-material-shell.enable = true;
-
   # ── iNiR Shell ───────────────────────────────────────────────────────────
+  # Official upstream iNiR NixOS module is enabled in flake.nix (inputs.inir.nixosModules.default).
+  # Upstream automatically bundles qs-rs, inir-accel, inir-cli, cava, file,
+  # and all core runtime dependencies.
   programs.inir = {
     enable = true;
-    package = inirComplete;
     extraPackages = with pkgs; [
       cava
       file
@@ -37,17 +29,6 @@ in
 
     # ── XWayland bridge ────────────────────────────────────────────────────
     xwayland-satellite
-
-    # ── Quickshell & Qt6 components ────────────────────────────────────────
-    quickshell
-    kdePackages.qtdeclarative
-    kdePackages.qtwayland
-    kdePackages.qtsvg
-    kdePackages.qtmultimedia
-    kdePackages.qt5compat
-    kdePackages.kirigami
-    kdePackages.kdialog
-    kdePackages.syntax-highlighting
 
     # ── Theming & wallpaper daemons (iNiR) ─────────────────────────────────
     matugen
